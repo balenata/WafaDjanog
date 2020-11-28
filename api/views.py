@@ -5,6 +5,11 @@ from rest_framework.decorators import api_view
 # Update & Delete image not working in all sections
 # that have ImageField
 
+class AdminViewSet(ModelViewSet):
+    queryset = Admin.objects.all()
+    serializer_class = AdminSerializer
+
+
 class AboutUsViewSet(ModelViewSet):
     queryset = AboutUs.objects.all()
     serializer_class = AboutUsSerializer
@@ -30,7 +35,7 @@ class BlogVideoViewSet(ModelViewSet):
     serializer_class = BlogVideoSerializer
 
 class QuoteViewSet(ModelViewSet):
-    queryset = Quote.objects.all()
+    queryset = Quote.objects.order_by('-id')
     serializer_class = QuoteSerializer
 
 class FieldWeWorkInViewSet(ModelViewSet):
@@ -38,7 +43,7 @@ class FieldWeWorkInViewSet(ModelViewSet):
     serializer_class = FieldWeWorkInSerializer
 
 class SlideShowViewSet(ModelViewSet):
-    queryset = SlideShow.objects.all()
+    queryset = SlideShow.objects.order_by('-id')
     serializer_class = SlideShowSerializer
 
 class VideoViewSet(ModelViewSet):
